@@ -1,8 +1,6 @@
 // This File has been authored by AllTheMods Staff, or a Community contributor for use in AllTheMods.
 // As all AllTheMods packs are licensed under All Rights Reserved, this file is not allowed to be used in any public packs not released by the AllTheMods Team, without explicit permission.
 
-const $BuiltInRegistries = Java.loadClass("net.minecraft.core.registries.BuiltInRegistries")
-
 StartupEvents.registry("block", (allthemods) => {
   allthemods.create("magical_soil").displayName("§bMagical Soil").grassSoundType().mapColor("grass").hardness(0.6)
 
@@ -207,16 +205,6 @@ StartupEvents.registry("fluid", (allthemods) => {
   allthemods.create("unrefined_liquid_souls", "thin").tint(0xccebff).displayName("Unrefined Liquid Souls").noBlock()
 
   allthemods.create("liquid_aureal", "thin").tint(0x7abaff).displayName("Liquid Aureal").noBlock()
-
-  allthemods
-    .create("test_fluid")
-    .displayName("Test Fluid")
-    .tint(0x00ffff)
-    .type((t) => {
-      t.canPushEntity(false)
-      t.lightLevel(15)
-      t.renderType(2)
-    })
 })
 
 StartupEvents.modifyCreativeTab("ironfurnaces:ironfurnaces_tab", (allthemods) => {
@@ -226,95 +214,6 @@ StartupEvents.modifyCreativeTab("ironfurnaces:ironfurnaces_tab", (allthemods) =>
   allthemods.add("ironfurnaces:upgrade_allthemodium")
   allthemods.add("ironfurnaces:upgrade_vibranium")
   allthemods.add("ironfurnaces:upgrade_unobtainium")
-})
-
-StartupEvents.postInit((allthemods) => {
-  $BuiltInRegistries.BLOCK.addAlias("kubejs:blaze_block", "allthecompressed:blaze_rod_block")
-  $BuiltInRegistries.ITEM.addAlias("kubejs:blaze_block", "allthecompressed:blaze_rod_block")
-
-  const colors = [
-    "white",
-    "light_gray",
-    "gray",
-    "black",
-    "brown",
-    "red",
-    "orange",
-    "yellow",
-    "lime",
-    "green",
-    "cyan",
-    "light_blue",
-    "blue",
-    "purple",
-    "magenta",
-    "pink"
-  ]
-
-  colors.forEach((color) => {
-    $BuiltInRegistries.BLOCK.addAlias(`antiblocksrechiseled:bright_${color}`, `luminax:${color}_block`)
-    $BuiltInRegistries.ITEM.addAlias(`antiblocksrechiseled:bright_${color}`, `luminax:${color}_block`)
-    $BuiltInRegistries.BLOCK.addAlias(`antiblocksrechiseled:wool_${color}`, `luminax:dim_${color}_block`)
-    $BuiltInRegistries.ITEM.addAlias(`antiblocksrechiseled:wool_${color}`, `luminax:dim_${color}_block`)
-    $BuiltInRegistries.BLOCK.addAlias(`antiblocksrechiseled:bright_${color}_border`, `luminax:${color}_block`)
-    $BuiltInRegistries.ITEM.addAlias(`antiblocksrechiseled:bright_${color}_border`, `luminax:${color}_block`)
-    $BuiltInRegistries.BLOCK.addAlias(`antiblocksrechiseled:wool_${color}_border`, `luminax:dim_${color}_block`)
-    $BuiltInRegistries.ITEM.addAlias(`antiblocksrechiseled:wool_${color}_border`, `luminax:dim_${color}_block`)
-
-    $BuiltInRegistries.BLOCK.addAlias(`antiblocksrechiseled:stair_${color}`, `luminax:${color}_stairs`)
-    $BuiltInRegistries.ITEM.addAlias(`antiblocksrechiseled:stair_${color}`, `luminax:${color}_stairs`)
-    $BuiltInRegistries.BLOCK.addAlias(`antiblocksrechiseled:stair_${color}_bright`, `luminax:${color}_stairs`)
-    $BuiltInRegistries.ITEM.addAlias(`antiblocksrechiseled:stair_${color}_bright`, `luminax:${color}_stairs`)
-    $BuiltInRegistries.BLOCK.addAlias(`antiblocksrechiseled:stair_${color}_wool`, `luminax:dim_${color}_stairs`)
-    $BuiltInRegistries.ITEM.addAlias(`antiblocksrechiseled:stair_${color}_wool`, `luminax:dim_${color}_stairs`)
-
-    $BuiltInRegistries.BLOCK.addAlias(`antiblocksrechiseled:slab_${color}`, `luminax:${color}_slab`)
-    $BuiltInRegistries.ITEM.addAlias(`antiblocksrechiseled:slab_${color}`, `luminax:${color}_slab`)
-    $BuiltInRegistries.BLOCK.addAlias(`antiblocksrechiseled:slab_${color}_bright`, `luminax:${color}_slab`)
-    $BuiltInRegistries.ITEM.addAlias(`antiblocksrechiseled:slab_${color}_bright`, `luminax:${color}_slab`)
-    $BuiltInRegistries.BLOCK.addAlias(`antiblocksrechiseled:slab_${color}_wool`, `luminax:dim_${color}_slab`)
-    $BuiltInRegistries.ITEM.addAlias(`antiblocksrechiseled:slab_${color}_wool`, `luminax:dim_${color}_slab`)
-
-    $BuiltInRegistries.BLOCK.addAlias(`antiblocksrechiseled:button_bright_${color}`, `luminax:${color}_button`)
-    $BuiltInRegistries.ITEM.addAlias(`antiblocksrechiseled:button_bright_${color}`, `luminax:${color}_button`)
-    $BuiltInRegistries.BLOCK.addAlias(`antiblocksrechiseled:button_wool_${color}`, `luminax:dim_${color}_button`)
-    $BuiltInRegistries.ITEM.addAlias(`antiblocksrechiseled:button_wool_${color}`, `luminax:dim_${color}_button`)
-
-    $BuiltInRegistries.BLOCK.addAlias(
-      `antiblocksrechiseled:pressure_plate_bright_${color}`,
-      `luminax:${color}_pressure_plate`
-    )
-    $BuiltInRegistries.ITEM.addAlias(
-      `antiblocksrechiseled:pressure_plate_bright_${color}`,
-      `luminax:${color}_pressure_plate`
-    )
-    $BuiltInRegistries.BLOCK.addAlias(
-      `antiblocksrechiseled:pressure_plate_wool_${color}`,
-      `luminax:dim_${color}_pressure_plate`
-    )
-    $BuiltInRegistries.ITEM.addAlias(
-      `antiblocksrechiseled:pressure_plate_wool_${color}`,
-      `luminax:dim_${color}_pressure_plate`
-    )
-  })
-
-  // EnderIO removed those
-  $BuiltInRegistries.ITEM.addAlias("enderio:wood_gear", "minecraft:oak_planks")
-  $BuiltInRegistries.ITEM.addAlias("enderio:stone_gear", "minecraft:cobblestone")
-
-  // MI removed those deepslate
-  $BuiltInRegistries.ITEM.addAlias(
-    "modern_industrialization:deepslate_iridium_ore",
-    "modern_industrialization:iridium_ore"
-  )
-  $BuiltInRegistries.BLOCK.addAlias(
-    "modern_industrialization:deepslate_iridium_ore",
-    "modern_industrialization:iridium_ore"
-  )
-
-  if (!Platform.isLoaded("modular_machinery_reborn")) {
-    $BuiltInRegistries.ITEM.addAlias("modular_machinery_reborn:modularium", "kubejs:modularium")
-  }
 })
 
 // This File has been authored by AllTheMods Staff, or a Community contributor for use in AllTheMods.
